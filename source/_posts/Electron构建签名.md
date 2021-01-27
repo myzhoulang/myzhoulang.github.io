@@ -4,7 +4,7 @@ date: 2020-03-13 21:34:17
 tags: [Electron, 前端]
 author: 周浪
 cover: /images/Elctron.jpg
-thumbnail: /images/Elctron.jpg
+thumbnail: /images/Electron.jpg
 ---       
 
 ## 签名准备
