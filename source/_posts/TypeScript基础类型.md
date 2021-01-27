@@ -3,6 +3,8 @@ title: TypeScript基础类型.md
 date: 2019-09-17 14:26:25
 tags: [TypeScript, 前端]
 author: 周浪
+cover: /images/ts.jpg
+thumbnail: /images/ts.jpg
 ---
 
 ## 基础类型

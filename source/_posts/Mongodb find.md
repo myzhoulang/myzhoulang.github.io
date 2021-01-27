@@ -3,6 +3,8 @@ title: mongodb查询
 date: 2019-11-12 15:42:57
 tags: Mongodb
 author: 周浪
+cover: /images/mongodb.jpg
+thumbnail: /images/mongodb.jpg
 ---
 
 ## find
