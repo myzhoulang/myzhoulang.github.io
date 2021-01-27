@@ -1,10 +1,10 @@
 ---
-title: TypeScript函数
-date: 2019-11-13 10:27:15
-tags: [TypsScript, 前端]
+title: Electron 构建时签名
+date: 2020-03-13 21:34:17
+tags: [Electron, 前端]
 author: 周浪
-cover: /images/ts.jpg
-thumbnail: /images/ts.jpg
+cover: /images/Elctron.jpg
+thumbnail: /images/Elctron.jpg
 ---       
 
 ## 签名准备
