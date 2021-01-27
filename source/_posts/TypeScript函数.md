@@ -3,8 +3,6 @@ title: TypeScript函数
 date: 2019-11-13 10:27:15
 tags: [TypsScript, 前端]
 author: 周浪
-cover: /images/ts.jpg
-thumbnail: /images/ts.jpg
 ---
 
 ## 函数类型和函数定义
