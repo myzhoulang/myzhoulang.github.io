@@ -10,13 +10,14 @@ thumbnail: /images/ts.jpg
 ## 基础类型
 
 - number(数字)
-  `number`包含整数和小数。可以有`二级制`，`八进制`，`十进制`,`十六进制`表示法。
+  `number`包含整数、小数和`bigint`。可以有`二级制`，`八进制`，`十进制`,`十六进制`表示法。
 
 ```typescript
-let num: number = 6; // 十进制
-let num: number = 0xf00d; // 十六进制
-let num: number = 0b1010; // 二进制
-let num: number = 0o744; // 八进制
+let num: number = 6;        // 十进制
+let num: number = 0xf00d;   // 十六进制
+let num: number = 0b1010;   // 二进制
+let num: number = 0o744;    // 八进制
+let num: bigint = 123n;     // bigint
 ```
 
 - string(字符串)
@@ -59,6 +60,7 @@ let t: [string, number] = ["abc", 1];
 let t: [string, number] = [1, "abc"]; // 值和类型的定义顺序不对
 let t: [string, number] = ["1bc", 1, 2]; // 元素得数量不匹配
 ```
+**虽然元组在赋值的时候长度和类型需要一一对应，但是可以通过一些数组的操作方法添加或删除元素，添加的元素类型必须是元组中指定的某一种类型**
 
 - enum(枚举)
   `enum`类型也是`ts`中新增的。使用枚举类型可以为一组数值赋予友好的名字。
@@ -76,6 +78,26 @@ const Colors = {
 const c: Colors = Colors.RED; // 0
 const c: Colors = Colors.BLUE; // 1
 const c: string = Colors[0]; // RED
+
+// 使用初始化数字枚举值
+const Status = {
+  Success = 200,
+  notFound = 404,
+  Error = 500
+}
+
+// 使用常量或计算值类初始化枚举值
+// 如果给某一个字段使用计算值或常量，当前字段后面跟着的字段
+// 需要设置初始值
+const INIT = 0;
+
+const Value {
+  a = INIT,
+  // b,  // Error, 必须设置初始值
+  b = 1,
+  c = 2
+}
+
 ```
 
 - any
@@ -87,6 +109,22 @@ foo = "string";
 foo = true;
 
 let arr: any[] = [1, "a", true];
+```
+
+- unknown
+  `unknown`类型表示未知类型，当在编写不知道变量值类型（这些值可能来自动态内容）时候用到。
+
+**`unknown`和`any`的区别？**
+`any`表示任何类型，使用`any`后，变量将可以执行任何操作，不在受类型约束。
+`unknown`表示未知类型，使用`unknown`后，必须使用类型断言后才能进行操作。不可以随便操作
+
+```typescript
+let a: any
+a.toFixed()     // 编译阶段不会报错
+
+let b:unknown
+b.toFixed()     // 编译阶段就会报错
+(b as number).tofixed() // 使用了类型断言 不会报错
 ```
 
 - void
@@ -141,7 +179,7 @@ let obj: { x: number; y: string } = { x: 1, y: "abc" };
 obj.x = 2; // ok
 ```
 
-## 联合类型
+- 联合类型
 
 对一些值可以是多种类型的变量，需要使用联合类型。
 
@@ -166,7 +204,27 @@ let arr: Array<number | string | boolean>;
 arr = [1, 1, boolean, "abc"];
 ```
 
-## 类型别名
+- 交叉类型
+  交叉类型是多个类型的并集，使用`&`连接多个类型，表示当前类型具备多个类型的特点
+
+```typescript
+interface A {
+  name: string
+}
+interface B {
+  age: number
+}
+
+// 变量 a 是一个对象，必须包含且只有 name 和 age 属性
+// name 必须是字符串
+// age 必须是数字
+let a: A & B = {
+  name: 'name',
+  age: 0
+}
+```
+
+- 类型别名
 
 类型别名是给一组或一个类型起一个名称。他只是引用了别的类型，本身不会创建一个类型。
 
